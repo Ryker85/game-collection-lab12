@@ -1,7 +1,7 @@
  // Game of Life, Week 12: grid, display, neighbor counts, the rule for one cell.
 //
 // TODO: remove the next line once every function below is used.
-#![allow(dead_code)]
+
 
 const ROWS: usize = 10;
 const COLS: usize = 20;
@@ -70,7 +70,32 @@ pub fn print_neighbor_counts(grid: &Grid) {
 // Set a few cells alive (hardcoded, or entered as `row col` pairs until a blank line),
 // print the grid, then the neighbor counts.
 pub fn play() {
-    todo!("Implement play")
+    let mut grid = new_grid();
+
+for row in 4..=6 {
+    grid[row][10] = true;   // middle
+}
+for row in 0..=2 {
+    grid[row][0] = true;    // left edge, from the top-left corner
+}
+println!("Grid:");
+print_grid(&grid);
+println!();
+
+println!("Neighbor counts:");
+print_neighbor_counts(&grid);
+println!();
+
+let (row, col) = (5, 10);
+let neighbors = count_neighbors(&grid, row, col);
+let alive_next = next_state(grid[row][col], neighbors);
+println!(
+    "Cell ({}, {}) has {} live neighbors, so next generation it is {}.",
+    row + 1,
+    col + 1,
+    neighbors,
+    if alive_next { "alive" } else { "dead" }
+);
 }
 
 
