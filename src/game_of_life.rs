@@ -13,8 +13,17 @@ pub fn new_grid() -> Grid {
 }
 
 // '#' for a live cell, '.' for a dead cell, one line per row.
-pub fn print_grid(_grid: &Grid) {
-    todo!("Implement print_grid")
+pub fn print_grid(grid: &Grid) {
+    for row in grid.iter() {
+        for &cell in row.iter() {
+            if cell {
+                print!("#");
+            } else {
+                print!(".");
+            }
+        }
+        println!();
+    }
 }
 
 // Live neighbors of (row, col): the eight surrounding cells, excluding the cell itself.
@@ -43,9 +52,6 @@ pub fn play() {
     todo!("Implement play")
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
 
     // Supplied by the instructor.
     #[test]
@@ -65,7 +71,7 @@ mod tests {
 
     // TODO (student): write the remaining cases from your truth table before you
     // write next_state. At minimum: a live cell with 4 neighbors, a dead cell with 2.
-}
+
 #[test]
 fn live_4_dies() {
     assert_eq!(next_state(true, 4), false);
