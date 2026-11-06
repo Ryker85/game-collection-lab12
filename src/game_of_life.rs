@@ -1,4 +1,4 @@
-// Game of Life, Week 12: grid, display, neighbor counts, the rule for one cell.
+ // Game of Life, Week 12: grid, display, neighbor counts, the rule for one cell.
 //
 // TODO: remove the next line once every function below is used.
 #![allow(dead_code)]
@@ -61,4 +61,23 @@ mod tests {
 
     // TODO (student): write the remaining cases from your truth table before you
     // write next_state. At minimum: a live cell with 4 neighbors, a dead cell with 2.
+}
+#[test]
+fn live_4_dies() {
+    assert_eq!(next_state(true, 4), false);
+}
+
+#[test]
+fn dead_2_stays_dead() {
+    assert_eq!(next_state(false, 2), false);
+}
+
+#[test]
+fn live_0_dies() {
+    assert_eq!(next_state(true, 0), false);
+}
+
+#[test]
+fn live_8_dies() {
+    assert_eq!(next_state(true, 8), false);
 }
